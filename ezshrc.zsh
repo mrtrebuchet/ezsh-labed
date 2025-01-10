@@ -24,7 +24,7 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time)
 
 # more prompt elements that are suggested
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh context dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir vcs)
 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=false
 

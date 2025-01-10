@@ -23,8 +23,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time)
 
 # more prompt elements that are suggested
-# (public_ip docker_machine pyenv nvm)          https://github.com/bhilburn/powerlevel9k#prompt-customization
-# Note: using public_ip is cool but when connection is down prompt waits for 10-20 seconds
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh context dir vcs)
 
@@ -86,9 +84,9 @@ plugins=(
     z
     sudo
     # httpie
-    # git
+     git
     # python
-    # docker
+     docker
     # lol
     # pip
     # pyenv

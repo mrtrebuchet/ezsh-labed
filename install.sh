@@ -90,14 +90,12 @@ else
     git clone --depth=1 https://github.com/zsh-users/zsh-history-substring-search ~/.config/ezsh/oh-my-zsh/custom/plugins/zsh-history-substring-search
 fi
 
-
 # INSTALL FONTS
 
-echo -e "Installing Nerd Fonts version of Hack, Roboto Mono, DejaVu Sans Mono\n"
+echo -e "Installing Nerd Fonts version of Roboto Mono and 0xProto\n"
 
-wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/HackNerdFont-Regular.ttf -P ~/.fonts/
 wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/RobotoMono/Regular/RobotoMonoNerdFont-Regular.ttf -P ~/.fonts/
-wget -q --show-progress -N https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/DejaVuSansMNerdFont-Regular.ttf -P ~/.fonts/
+wget -q --show-progress -N https://github.com/0xType/0xProto/blob/main/fonts/0xProto-Regular.ttf -P ~/.fonts/
 
 fc-cache -fv ~/.fonts
 
@@ -125,18 +123,6 @@ if [ -d ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-tab ]; then
     cd ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-tab && git pull
 else
     git clone --depth 1 https://github.com/Aloxaf/fzf-tab ~/.config/ezsh/oh-my-zsh/custom/plugins/fzf-tab
-fi
-
-if [ -d ~/.config/ezsh/marker ]; then
-    cd ~/.config/ezsh/marker && git pull
-else
-    git clone --depth 1 https://github.com/jotyGill/marker ~/.config/ezsh/marker
-fi
-
-if ~/.config/ezsh/marker/install.py; then
-    echo -e "Installed Marker\n"
-else
-    echo -e "Marker Installation Had Issues\n"
 fi
 
 # if git clone --depth 1 https://github.com/todotxt/todo.txt-cli.git ~/.config/ezsh/todo; then :

@@ -9,7 +9,6 @@ Quickly install and setup zsh and oh-my-zsh (https://github.com/robbyrussell/oh-
 * history-substring-search (https://github.com/zsh-users/zsh-history-substring-search)
 * fzf (https://github.com/junegunn/fzf)
 * k (https://github.com/supercrabtree/k)
-* marker (https://github.com/pindexis/marker)
 * todotxt (https://github.com/todotxt/todo.txt-cli)
 
 Sets following useful aliases and ohmyzsh plugins. **You can add more or overwrite these in your personal zsh config files under `~/.config/ezsh/zshrc/`** 
@@ -27,17 +26,6 @@ Sets following useful aliases and ohmyzsh plugins. **You can add more or overwri
 * [sudo](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo)                - easily prefix your commands with sudo by pressing `esc` twice
 * [systemd](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/systemd)          - many useful aliases for systemd
 
-## Demo
-
-Command prompt looks like this (easily customize it by placing your configs in ~/.config/ezsh/zshrc/)
-![prompt](https://user-images.githubusercontent.com/8462091/43674765-8bb13a76-9817-11e8-8b7b-16b8b1998408.png)
-user :  directory  :  git stats : last command exit code                     free memory: load : time
-
-Watch this to get an idea of what your Shell (well, life!) could be like!!
-
-[![asciicast](https://asciinema.org/a/225226.svg)](https://asciinema.org/a/225226)
-
-
 ## Installation
 Requirements:
 * `git` to clone it.
@@ -49,26 +37,13 @@ cd ezsh
 ./install.sh -c        # only run with '-c' the first time, running multiple times will duplicate history entries
 ```
 This will install the setup under `~/.config/ezsh/`
-Change your terminal's fonts to either "RobotoMono Nerd Font" or "Hack Nerd Font" or "DejaVu Sans Mono Nerd Fonts".
-You can also manually install Nerd Fonts of your choice.
+Change your terminal's fonts to your installed Nerd Font.
 
 ## Notes
-* Make sure to use any terminal besides QTerminal (default one in kali-xfce), here back space doesn't work for some reason (alt+back does). I recommend xfce4-terminal for Kali
 
-* If you are already using zsh, your zsh config will be backed up to .zshrc-backup-date
-
-* If the text/icons look broken, make sure your terminal is using one of the Nerd fonts. [discussion](https://github.com/powerline/fonts/issues/185). I recommend "RobotoMono Nerd Font"
-
-* marker's shortcut "Ctr+t" clashed with fzf so I rebound it to "Ctr +b"
+* If the text/icons look broken, make sure your terminal is using one of the Nerd fonts.
 
 * All oh-my-zsh plugins are installed under ~/.config/ezsh/oh-my-zsh/plugin, Other tools (fzf,marker,todo) are installed in ~/.config/ezsh/
-
-* If you use Marker, disable zsh-autosuggestions as it has a conflict with Marker (completion looks ugly). Add `plugins=(${plugins:#(zsh-autosuggestions)})` into your personal config file to remove it
-
-* The look of the shell can be very easily customised[https://github.com/bhilburn/powerlevel9k#prompt-customization] by overwriting POWERLEVEL10K settings
-in your personal config file under ~/.config/ezsh/zshrc/ . See example setup under example/personal_rc.zsh
-
-Suggestions about more cool tools are always welcome :)
 
 ### To Uninstall
 To uninstall simply delete ~/.zshrc and ~/.config/ezsh/. The script creates a backup of your original .zshrc in the home folder with the filename indicating it's a backup. Rename it back to .zshrc

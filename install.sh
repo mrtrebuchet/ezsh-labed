@@ -42,6 +42,15 @@ if [ -d ~/.quickzsh ]; then
     echo -e "\n PREVIOUS SETUP FOUND AT '~/.quickzsh'. PLEASE MANUALLY MOVE ANY FILES YOU'D LIKE TO '~/.config/ezsh' \n"
 fi
 
+echo -e "Installing tmux \n"
+if command -v tmux &> /dev/null; then
+    echo -e "already installed\n"
+else 
+    if sudo apt install -y tmux || sudo pacman -S tmux || sudo dnf install -y tmux || sudo yum install -y tmux || sudo brew install tmux || pkg install tmux ; then
+        echo -e "tmux Installed\n"
+    fi
+fi
+
 echo -e "Installing oh-my-zsh\n"
 if [ -d ~/.config/ezsh/oh-my-zsh ]; then
     echo -e "oh-my-zsh is already installed\n"

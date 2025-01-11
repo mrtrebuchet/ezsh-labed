@@ -4,7 +4,9 @@
 cp_hist_flag=false
 noninteractive_flag=false
 
+# ------------------------
 # Loop through all arguments
+# ------------------------
 for arg in "$@"
 do
     case $arg in
@@ -20,6 +22,10 @@ do
     esac
 done
 
+# ------------------------
+# Prerequisite setup
+# ------------------------
+# Add NeoVim prereqs
 if command -v zsh &> /dev/null && command -v git &> /dev/null && command -v wget &> /dev/null; then
     echo -e "ZSH and Git are already installed\n"
 else
@@ -29,6 +35,10 @@ else
         echo -e "Please install the following packages first, then try again: zsh git wget \n" && exit
     fi
 fi
+
+# ------------------------
+# zsh setup
+# ------------------------
 
 if mv -n ~/.zshrc ~/.zshrc-backup-$(date +"%Y-%m-%d"); then # backup .zshrc
     echo -e "Backed up the current .zshrc to .zshrc-backup-date\n"
@@ -42,14 +52,6 @@ if [ -d ~/.quickzsh ]; then
     echo -e "\n PREVIOUS SETUP FOUND AT '~/.quickzsh'. PLEASE MANUALLY MOVE ANY FILES YOU'D LIKE TO '~/.config/ezsh' \n"
 fi
 
-echo -e "Installing tmux \n"
-if command -v tmux &> /dev/null; then
-    echo -e "already installed\n"
-else 
-    if sudo apt install -y tmux || sudo pacman -S tmux || sudo dnf install -y tmux || sudo yum install -y tmux || sudo brew install tmux || pkg install tmux ; then
-        echo -e "tmux Installed\n"
-    fi
-fi
 
 echo -e "Installing oh-my-zsh\n"
 if [ -d ~/.config/ezsh/oh-my-zsh ]; then
@@ -168,6 +170,38 @@ if [ "$cp_hist_flag" = true ]; then
 else
     echo -e "\nNot copying bash_history to zsh_history, as --cp-hist or -c is not supplied\n"
 fi
+
+# ------------------------
+# tmux setup
+# ------------------------
+
+echo -e "Installing tmux \n"
+if command -v tmux &> /dev/null; then
+    echo -e "already installed\n"
+else 
+    if sudo apt install -y tmux || sudo pacman -S tmux || sudo dnf install -y tmux || sudo yum install -y tmux || sudo brew install tmux || pkg install tmux ; then
+        echo -e "tmux Installed\n"
+    fi
+fi
+
+# ------------------------
+# Neovim setup
+# ------------------------
+echo -e "Installing Neovim \n"
+if command -v nvim &> /dev/null; then
+    echo -e "already installed\n"
+else
+    git clone --single-branch --branch stable https://github.com/neovim/neovim.git ~/neovim
+    cd ~/neovim
+    make CMAKE_BUILD_TYPE=RelWithDebInfo #makes with debugging info
+    cd build
+    cpack -G DEB
+    sudo dpkg -i nvim-linux64.deb
+fi
+
+# ------------------------
+# Exit check
+# ------------------------
 
 if [ "$noninteractive_flag" = true ]; then
     echo -e "Installation complete, exit terminal and enter a new zsh session\n"

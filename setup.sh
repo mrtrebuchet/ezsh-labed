@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # List of applications to get and install
-applications=("autoconf" "cmake" "curl" "git" "make" "python3" "tmux" "vim" "wget" "zsh")
+applications=("autoconf" "cmake" "cowsay" "curl" "git" "make" "python3" "tmux" "vim" "wget" "zsh")
 
 # Function to install packages on Debian-based systems
 install_debian() {
@@ -32,9 +32,11 @@ if [ -f /etc/os-release ]; then
   case "$ID" in
     debian|ubuntu)
       echo "Detected Debian-based system."
+      install_debian
       ;;
     arch)
       echo "Detected Arch-based system."
+      install_arch
       ;;
     *)
       echo "Unsupported Linux distribution: $ID"
@@ -45,3 +47,5 @@ else
   echo "Cannot determine the Linux distribution."
   exit 1
 fi
+
+echo cowsay "script done"

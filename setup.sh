@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # List of applications to get and install
-applications=("autoconf" "cmake" "cowsay" "curl" "git" "make" "python3" "tmux" "vim" "wget" "zsh")
+applications=("autoconf" "cmake" "cowsay" "curl" "fuse" "git" "make" "nano" "python3" "tmux" "vim" "wget" "zsh")
 
 # Function to install packages on Debian-based systems
 install_debian() {
@@ -26,7 +26,11 @@ install_arch() {
     fi
   done
 }
-
+# -------------------
+# Start of Script
+# -------------------
+#
+# Check OS type, then run install function
 if [ -f /etc/os-release ]; then
   . /etc/os-release
   case "$ID" in
@@ -44,8 +48,10 @@ if [ -f /etc/os-release ]; then
       ;;
   esac
 else
-  echo "Cannot determine the Linux distribution."
+  echo "No configuration for installed OS."
   exit 1
 fi
+
+
 
 echo cowsay "script done"

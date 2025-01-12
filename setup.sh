@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # List of applications to get and install
-applications=("autoconf" "cmake" "curl" "git" "make" "tmux" "vim" "wget" "zsh")
+applications=("autoconf" "cmake" "curl" "git" "make" "python3" "tmux" "vim" "wget" "zsh")
 
 # Function to install packages on Debian-based systems
 install_debian() {

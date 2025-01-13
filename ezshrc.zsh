@@ -3,15 +3,12 @@ export TERM="xterm-256color"
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.config/ezsh/oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-
-
 POWERLEVEL9K_MODE='nerdfont-complete'
-
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 #POWERLEVEL9K_OS_ICON_BACKGROUND="white"
@@ -20,14 +17,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 #POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
 #POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time)
-
-# more prompt elements that are suggested
-
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir vcs)
-
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status command_execution_time)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=false
-
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -129,17 +121,9 @@ export EDITOR='nvim'
 # Add to PATH to Install and run programs with "pip install --user"
 export PATH=$PATH:~/.local/bin
 
-export PATH=$PATH:~/.config/ezsh/bin
-
-NPM_PACKAGES="${HOME}/.npm"
-PATH="$NPM_PACKAGES/bin:$PATH"
-
-[[ -s "$HOME/.config/ezsh/marker/marker.sh" ]] && source "$HOME/.config/ezsh/marker/marker.sh"
-
 autoload -U compinit && compinit -C -d ~/.cache/zsh/.zcompdump        # zsh-completions
 # autoload bashcompinit                 # bash completions
 # bashcompinit
-
 
 # QuickZsh
 SAVEHIST=50000      #save upto 50,000 lines in history. oh-my-zsh default is 10,000

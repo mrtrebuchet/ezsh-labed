@@ -42,21 +42,20 @@ command -v zsh &> /dev/null && command -v git &> /dev/null && command -v wget &>
 # Install oh-my-zsh
 install_plugin ~/.oh-my-zsh https://github.com/ohmyzsh/ohmyzsh.git
 
-# Copy configuration files
+# Copy configuration files:
 cp -f .zshrc ~/
-cp -f ezshrc.zsh ~/.config/ezsh/
-
+cp -f zshrc.zsh ~/.zshrc
+:
 # Move zcompdump files
 [ -f ~/.zcompdump ] && mv ~/.zcompdump* ~/.cache/zsh/
 
 # Install plugins
 plugins=(
-    ["~/.oh-my-zsh/plugins/zsh-autosuggestions"]="https://github.com/zsh-users/zsh-autosuggestions"
+    ["~/.oh-my-zsh/custom/plugins/zsh-autosuggestions"]="https://github.com/zsh-users/zsh-autosuggestions"
     ["~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]="https://github.com/zsh-users/zsh-syntax-highlighting"
     ["~/.oh-my-zsh/custom/plugins/zsh-completions"]="https://github.com/zsh-users/zsh-completions"
     ["~/.oh-my-zsh/custom/plugins/zsh-history-substring-search"]="https://github.com/zsh-users/zsh-history-substring-search"
     ["~/.oh-my-zsh/custom/themes/powerlevel10k"]="https://github.com/romkatv/powerlevel10k"
-    ["~/.fzf"]="https://github.com/junegunn/fzf"
     ["~/.oh-my-zsh/custom/plugins/k"]="https://github.com/supercrabtree/k"
     ["~/.oh-my-zsh/custom/plugins/fzf-tab"]="https://github.com/Aloxaf/fzf-tab"
 )

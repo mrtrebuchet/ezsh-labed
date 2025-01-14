@@ -46,8 +46,6 @@ install_shell() {
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
   mv -n ~/.zshrc ~/.zshrc-backup-$(date +"%Y-%m-%d");
   cp .n ./example.zshrc ~/.zshrc
-  exec zsh
-  p10k configure
 }
 
 #

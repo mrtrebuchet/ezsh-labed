@@ -57,7 +57,7 @@ install_shell() {
 install_neovim() {
   echo "Installing Neovim"
   git clone https://github.com/neovim/neovim.git
-  cd ~git/neovim
+  cd ./neovim
   rm -r build/  # clear the CMake cache
   make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
   make install

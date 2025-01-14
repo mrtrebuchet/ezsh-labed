@@ -2,6 +2,9 @@ export TERM="xterm-256color"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+Add neovim to path
+export PATH="$PATH:/opt/nvim/"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export ZPLUG_HOME=$HOME/.zplug

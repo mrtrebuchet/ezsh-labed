@@ -80,12 +80,14 @@ if [ -f /etc/os-release ]; then
       install_debian
       install_shell
       install_neovim
+      exec zsh
       ;;
-    arch)
+    arch|endeavourOS)
       echo "Detected Arch-based system."
       install_arch
       install_shell
       install_neovim
+      exec zsh
       ;;
     *)
       echo "Unsupported Linux distribution: $ID"

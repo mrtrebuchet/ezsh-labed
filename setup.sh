@@ -2,15 +2,19 @@
 
 # List of applications to get and install
 coreapps=("autoconf" "cmake" "curl" "fuse" "git" "make" "nano" "python3" "tmux" "vim" "wget" "zsh")
+debapps=("build-essential" "ninja-build" "gettext")
+archapps=("base-devel" "ninja")
 
 
 
 # Function to install packages on Debian-based systems
 install_debian() {
-  for app in "${coreapps[@]}"; do
+  local apps=("${coreapps[@]}" "${debapps[@]}")
+  sudo apt-get update 
+  for app in "${apps[@]}"; do
     if ! dpkg -l | grep -q "^ii\s*${app} "; then
       echo "${app} is not installed. Installing..."
-      sudo apt-get update && sudo apt-get install -y "${app}"
+      sudo apt-get install -y "${app}"
     else
       echo "${app} is already installed."
     fi
@@ -20,7 +24,8 @@ install_debian() {
 
 # Function to install packages on Arch-based systems
 install_arch() {
-  for app in "${coreapps[@]}"; do
+  local apps=("${coreapps[@]}" "${archapps[@]}")
+  for app in "${apps[@]}"; do
     if ! pacman -Q ${app} &> /dev/null; then
       echo "${app} is not installed. Installing..."
       sudo pacman -Syu --noconfirm "${app}"
@@ -50,14 +55,15 @@ install_shell() {
 }
 
 install_neovim() {
-echo "Installing Neovim"
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
-./nvim.appimage
-mkdir -p /opt/nvim
-mv nvim.appimage /opt/nvim/nvim
-echo "Installing labed kickstart.vim"
-git clone https://github.com/mrtrebuchet/labed-neovim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+  echo "Installing Neovim"
+  git clone https://github.com/neovim/neovim.git
+  cd ~git/neovim
+  rm -r build/  # clear the CMake cache
+  make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
+  make install
+  export PATH="$HOME/neovim/bin:$PATH"
+  echo "Installing labed kickstart.vim"
+  git clone https://github.com/mrtrebuchet/labed-neovim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 }
 
 #

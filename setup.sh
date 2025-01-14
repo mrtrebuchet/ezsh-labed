@@ -19,7 +19,7 @@ install_debian() {
 
 # Function to install packages on Arch-based systems
 install_arch() {
-  for app in "${applications[@]}"; do
+  for app in "${coreapps[@]}"; do
     if ! pacman -Q ${app} &> /dev/null; then
       echo "${app} is not installed. Installing..."
       sudo pacman -Syu --noconfirm "${app}"
@@ -39,9 +39,9 @@ install_shell() {
   wget -q --show-progress -N https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf -P ~/.local/share/fonts/
   wget -q --show-progress -N https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf -P ~/.local/share/fonts/
   echo "installing OhMyZsh"
-  sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   echo "Installing zplug"
-  sudo curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
   echo "Installing PowerLevel10k"
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
   mv -n ~/.zshrc ~/.zshrc-backup-$(date +"%Y-%m-%d");

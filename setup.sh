@@ -4,6 +4,7 @@
 coreapps=("autoconf" "cmake" "curl" "fuse" "git" "make" "nano" "python3" "tmux" "vim" "wget" "zsh")
 
 
+
 # Function to install packages on Debian-based systems
 install_debian() {
   for app in "${coreapps[@]}"; do
@@ -48,6 +49,17 @@ install_shell() {
   cp -n ~/zsh-setup/example.zshrc ~/.zshrc
 }
 
+install_neovim() {
+echo "Installing Neovim"
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+./nvim.appimage
+mkdir -p /opt/nvim
+mv nvim.appimage /opt/nvim/nvim
+echo "Installing labed kickstart.vim"
+git clone https://github.com/mrtrebuchet/labed-neovim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+}
+
 #
 # -------------------
 # Start of Script
@@ -61,11 +73,13 @@ if [ -f /etc/os-release ]; then
       echo "Detected Debian-based system."
       install_debian
       install_shell
+      install_neovim
       ;;
     arch)
       echo "Detected Arch-based system."
       install_arch
       install_shell
+      install_neovim
       ;;
     *)
       echo "Unsupported Linux distribution: $ID"
